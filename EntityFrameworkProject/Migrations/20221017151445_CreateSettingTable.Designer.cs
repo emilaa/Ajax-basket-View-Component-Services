@@ -4,14 +4,16 @@ using EntityFrameworkProject.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EntityFrameworkProject.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221017151445_CreateSettingTable")]
+    partial class CreateSettingTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -49,7 +51,7 @@ namespace EntityFrameworkProject.Migrations
                         new
                         {
                             Id = 1,
-                            Date = new DateTime(2022, 10, 18, 0, 30, 20, 750, DateTimeKind.Local).AddTicks(6040),
+                            Date = new DateTime(2022, 10, 17, 19, 14, 44, 605, DateTimeKind.Local).AddTicks(776),
                             Description = "Description-1",
                             Image = "blog-feature-img-1.jpg",
                             IsDeleted = false,
@@ -58,7 +60,7 @@ namespace EntityFrameworkProject.Migrations
                         new
                         {
                             Id = 2,
-                            Date = new DateTime(2022, 10, 18, 0, 30, 20, 751, DateTimeKind.Local).AddTicks(8519),
+                            Date = new DateTime(2022, 10, 17, 19, 14, 44, 606, DateTimeKind.Local).AddTicks(3671),
                             Description = "Description-2",
                             Image = "blog-feature-img-3.jpg",
                             IsDeleted = false,
@@ -67,7 +69,7 @@ namespace EntityFrameworkProject.Migrations
                         new
                         {
                             Id = 3,
-                            Date = new DateTime(2022, 10, 18, 0, 30, 20, 751, DateTimeKind.Local).AddTicks(8579),
+                            Date = new DateTime(2022, 10, 17, 19, 14, 44, 606, DateTimeKind.Local).AddTicks(3731),
                             Description = "Description-3",
                             Image = "blog-feature-img-4.jpg",
                             IsDeleted = false,
@@ -199,13 +201,6 @@ namespace EntityFrameworkProject.Migrations
                             IsDeleted = false,
                             Key = "Email",
                             Value = "p130@code.edu.az"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            IsDeleted = false,
-                            Key = "CompanyBoss",
-                            Value = "Bakhtiyar Shamilzada"
                         });
                 });
 

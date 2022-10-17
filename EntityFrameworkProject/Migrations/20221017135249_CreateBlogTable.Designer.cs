@@ -4,14 +4,16 @@ using EntityFrameworkProject.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EntityFrameworkProject.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221017135249_CreateBlogTable")]
+    partial class CreateBlogTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -49,7 +51,7 @@ namespace EntityFrameworkProject.Migrations
                         new
                         {
                             Id = 1,
-                            Date = new DateTime(2022, 10, 18, 0, 30, 20, 750, DateTimeKind.Local).AddTicks(6040),
+                            Date = new DateTime(2022, 10, 17, 17, 52, 48, 434, DateTimeKind.Local).AddTicks(3268),
                             Description = "Description-1",
                             Image = "blog-feature-img-1.jpg",
                             IsDeleted = false,
@@ -58,7 +60,7 @@ namespace EntityFrameworkProject.Migrations
                         new
                         {
                             Id = 2,
-                            Date = new DateTime(2022, 10, 18, 0, 30, 20, 751, DateTimeKind.Local).AddTicks(8519),
+                            Date = new DateTime(2022, 10, 17, 17, 52, 48, 435, DateTimeKind.Local).AddTicks(6768),
                             Description = "Description-2",
                             Image = "blog-feature-img-3.jpg",
                             IsDeleted = false,
@@ -67,7 +69,7 @@ namespace EntityFrameworkProject.Migrations
                         new
                         {
                             Id = 3,
-                            Date = new DateTime(2022, 10, 18, 0, 30, 20, 751, DateTimeKind.Local).AddTicks(8579),
+                            Date = new DateTime(2022, 10, 17, 17, 52, 48, 435, DateTimeKind.Local).AddTicks(6823),
                             Description = "Description-3",
                             Image = "blog-feature-img-4.jpg",
                             IsDeleted = false,
@@ -149,64 +151,6 @@ namespace EntityFrameworkProject.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("ProductImages");
-                });
-
-            modelBuilder.Entity("EntityFrameworkProject.Models.Setting", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Key")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Value")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Settings");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            IsDeleted = false,
-                            Key = "HeaderLogo",
-                            Value = "logo.png"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            IsDeleted = false,
-                            Key = "Phone",
-                            Value = "(055) 354-34-69"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            IsDeleted = false,
-                            Key = "ProductTake",
-                            Value = "4"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            IsDeleted = false,
-                            Key = "Email",
-                            Value = "p130@code.edu.az"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            IsDeleted = false,
-                            Key = "CompanyBoss",
-                            Value = "Bakhtiyar Shamilzada"
-                        });
                 });
 
             modelBuilder.Entity("EntityFrameworkProject.Models.Slider", b =>

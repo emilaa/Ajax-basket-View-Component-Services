@@ -1,5 +1,6 @@
 ﻿using EntityFrameworkProject.Data;
 using EntityFrameworkProject.Models;
+using EntityFrameworkProject.Services;
 using EntityFrameworkProject.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -17,9 +18,11 @@ namespace EntityFrameworkProject.Controllers
     public class HomeController : Controller
     {
         private readonly AppDbContext _context;
-        public HomeController(AppDbContext context)
+        private readonly LayoutService _layoutService;
+        public HomeController(AppDbContext context, LayoutService layoutService)
         {
             _context = context;
+            _layoutService = layoutService;
         }
 
         public async Task<IActionResult> Index()
@@ -28,7 +31,9 @@ namespace EntityFrameworkProject.Controllers
 
             //Response.Cookies.Append("surname", "Abdullayev", new CookieOptions { MaxAge= TimeSpan.FromDays(10)});
 
+            Dictionary<string, string> settingDatas = await _layoutService.GetDatasFromSetting();
 
+            int take = int.Parse(settingDatas["HomeTakeProduct"]);
 
             IEnumerable<Slider> sliders = await _context.Sliders.ToListAsync();
             SliderDetail sliderDetail = await _context.SliderDetails.FirstOrDefaultAsync();
@@ -36,7 +41,7 @@ namespace EntityFrameworkProject.Controllers
             IEnumerable<Product> products = await _context.Products
                 .Where(m => m.IsDeleted == false)
                 .Include(m => m.Category)
-                .Include(m => m.ProductImages).Take(4).ToListAsync();
+                .Include(m => m.ProductImages).Take(take).ToListAsync();
 
 
             HomeVM model = new HomeVM
